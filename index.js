@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const emotionRoutes = require('./emotion')
 const app = express();
 require('dotenv').config();
 const { ObjectId } = require('mongodb');
@@ -35,6 +36,7 @@ async function run() {
 
 
         app.use('/api', apiRoutes(db));
+        app.use('/api', emotionRoutes(db));
 
         app.get("/api/hotels/:id", async (req, res) => {
             try {
